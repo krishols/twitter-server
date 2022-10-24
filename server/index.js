@@ -59,13 +59,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
-app.use(
-  cors({
-    origin: 'http://localhost:3000'
-,    credentials: true,
-  })
-);
 
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors());
 
 app.get("/api", (req, res) => {
   res.json({ message: "Uwu from server!" });
