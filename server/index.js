@@ -59,14 +59,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
+app.use(
+  cors({
+    origin: 'http://localhost:3000'
+,    credentials: true,
+  })
+);
 
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors());
 
 app.get("/api", (req, res) => {
   res.json({ message: "Uwu from server!" });
@@ -224,7 +223,7 @@ app.get("/users/:id/profile-pic", (req, res) => {
 
 
 
-app.post("/:id/change-profile-pic", upload.single("pic"), async (req, res) => {
+app.post("/:id/change-profile-pic", upload.single("pic"),  (req, res) => {
   const file = req.file;
 
   // const user = localStorage.getItem('currentUser');
@@ -235,7 +234,7 @@ app.post("/:id/change-profile-pic", upload.single("pic"), async (req, res) => {
   if (listAll(myStorage, '/profile-pics/' + user) != null) {
     deleteObject(imageRef).then((() => { console.log("Success") }));
   }
-  await uploadBytes(imageRef, file.buffer, metatype)
+   uploadBytes(imageRef, file.buffer, metatype)
     .then((snapshot) => {
       res.send("uploaded!");
     })
