@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
 
 const corsOptions = {
-  origin: 'https://staging-twittah.herokuapp.com',
+  origin: '*',
   optionsSuccessStatus: 200
 };
 
