@@ -60,12 +60,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
 
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-};
 
-app.use(cors(corsOptions));
+
+app.use(cors());
 app.options('*', cors());
 
 app.get("/api", (req, res) => {
