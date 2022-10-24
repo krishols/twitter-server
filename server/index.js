@@ -96,7 +96,7 @@ app.get('/users/:id', (req, res) => {
 
 
 
-app.get("/users/:id/following-tweets", (req, res) => {
+app.get("/users/:id/following", (req, res) => {
   // at some point i need to do this consistently lol
   var user = req.params.id;
   var dbRef = firebase.database().ref();
@@ -108,6 +108,29 @@ app.get("/users/:id/following-tweets", (req, res) => {
     if (snapshot.exists()) {
       var following = (Object.keys(snapshot.val()));
 
+
+      res.json(following);
+      res.end();
+    }})
+    .catch((error) => console.log(error.message));
+
+  });
+
+app.get("/users/:id/tweets", (req, res) => {
+  var user = req.params.id;
+  var dbRef = firebase.database().ref();
+  dbRef.child('users').child(user).child('tweets').get().then((snapshot) => {
+    if (snapshot.exists())
+ {
+    res.json(snapshot.val());
+    res.end();
+ }  });
+});
+
+
+
+
+/*
       for (const account of following) {
         dbRef.child('users').child(account).child('tweets').get().then((mysnapshot) => {
           ;
@@ -123,24 +146,8 @@ app.get("/users/:id/following-tweets", (req, res) => {
         })
       }
   //  console.log(tweets);
-    }
-  }
-      )
-      .then(() =>{
-
-      //  console.log(tweets);
-        res.json(tweets);
-      })
-      .catch((error) => console.log(error.message));
-
-
-
-  
-
-  });
-
-
-
+  */
+    
 
 
 
