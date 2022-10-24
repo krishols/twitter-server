@@ -61,8 +61,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
 app.use(
   cors({
-    origin: "https://prod-twittah.herokuapp.com/"
-,    credentials: true,
+    origin: 'https://nd-twitter-ccd8b.web.app'
+
   })
 );
 
