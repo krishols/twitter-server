@@ -62,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 app.use(cors());
-app.options('*', cors());
+//app.options('*', cors());
 
 app.get("/api", (req, res) => {
   res.json({ message: "Uwu from server!" });
