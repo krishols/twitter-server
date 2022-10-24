@@ -66,6 +66,13 @@ app.use(
   })
 );
 
+<<<<<<< HEAD
+=======
+
+
+app.use(cors());
+app.options('*', cors());
+>>>>>>> 2d831e8e923daa6b234c7b3808f896161cbf087b
 
 app.get("/api", (req, res) => {
   res.json({ message: "Uwu from server!" });
