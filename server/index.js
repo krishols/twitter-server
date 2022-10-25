@@ -233,6 +233,9 @@ app.get("/users/:id/profile-pic", (req, res) => {
     })
     .catch((error) => console.log((error.message)));
   }
+  else {
+    res.end();
+  }
 });
 
 
