@@ -2,7 +2,7 @@
   "name": "final_twitter",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
+  "main": "node server/index.js",
   "homepage": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
