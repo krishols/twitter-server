@@ -57,7 +57,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-a//pp.use(express.static(path.join(__dirname, 'client/build')));
+//pp.use(express.static(path.join(__dirname, 'client/build')));
 //use cors to allow cross origin resource sharing
 /*
 app.use((req, res, next) => {
