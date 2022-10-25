@@ -170,13 +170,12 @@ app.post('/users/:id/add-tweet', (req, res) => {
 
   var nowSec = req.body.time;
   var draftContent = req.body.content;
-  var userpfp = req.body.pfp;
+ // var userpfp = req.body.pfp;
 
   var dbRef = firebase.database().ref();
   var tweetBody = {
     username: currentUsername,
     content: draftContent,
-    pfp: userpfp,
     likes: 0
   };
   dbRef.child('users').child(currentUsername).get().then((snapshot) => {
